@@ -9,6 +9,9 @@ RUN DEBIAN_FRONTEND=noninteractive \
     python3 python3-pip python3-setuptools && \
     pip install argparse requests cryptography pipreqs
 
+RUN DEBIAN_FRONTEND=noninteractive \
+    apt-get -y install python3.9
+
 # Install bitcoind
 ENV BITCOIND_VER="24.0.1"
 COPY bitcoind-download.sh /usr/local/bin
@@ -31,7 +34,9 @@ COPY bitcoind /data
 COPY download-minig-framework.sh /usr/local/bin
 RUN chmod +x /usr/local/bin/download-minig-framework.sh
 RUN download-minig-framework.sh -s "test/functional/test_framework" -d "/data/test/functional/test_framework"
+RUN download-minig-framework.sh -s "test/functional/test_framework/crypto" -d "/data/test/functional/test_framework/crypto"
 RUN download-minig-framework.sh -s "contrib/signet" -d "/data/contrib/signet"
+RUN sed -i 's/env python3/env python3.9/' /data/contrib/signet/miner
 RUN pipreqs /data/test/functional/test_framework
 RUN pip install -r /data/test/functional/test_framework/requirements.txt
 

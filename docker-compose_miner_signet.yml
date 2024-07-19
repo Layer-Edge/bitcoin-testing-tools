@@ -43,17 +43,17 @@ services:
     expose:
       - "60602"
 
-  c-lightning:
-    container_name: c-lightning
-    build:
-      context: c-lightning
-    image: core_lightning
-    volumes:
-      - shared_vol_ln:/lightningd
-    network_mode: "host"
-    expose:
-      - "39735"
-      - "3092"
+  # c-lightning:
+  #   container_name: c-lightning
+  #   build:
+  #     context: c-lightning
+  #   image: core_lightning
+  #   volumes:
+  #     - shared_vol_ln:/lightningd
+  #   network_mode: "host"
+  #   expose:
+  #     - "39735"
+  #     - "3092"
 
   faucet:
     container_name: faucet
@@ -64,27 +64,27 @@ services:
     expose:
       - "5000"
 
-  lnbits:
-    container_name: lnbits
-    build:
-      context: lnbits
-    image: lnbits_img
-    volumes:
-      - shared_vol_ln:/lightningd
-    network_mode: "host"
-    expose:
-      - "7000"
+  # lnbits:
+  #   container_name: lnbits
+  #   build:
+  #     context: lnbits
+  #   image: lnbits_img
+  #   volumes:
+  #     - shared_vol_ln:/lightningd
+  #   network_mode: "host"
+  #   expose:
+  #     - "7000"
 
-  rtl:
-    container_name: rtl
-    build:
-      context: rtl
-    image: rtl_img
-    volumes:
-      - shared_vol_ln:/lightningd
-    network_mode: "host"
-    expose:
-      - "3000"
+  # rtl:
+  #   container_name: rtl
+  #   build:
+  #     context: rtl
+  #   image: rtl_img
+  #   volumes:
+  #     - shared_vol_ln:/lightningd
+  #   network_mode: "host"
+  #   expose:
+  #     - "3000"
 
 volumes:
   shared_vol_btc:
