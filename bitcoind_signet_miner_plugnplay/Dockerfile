@@ -58,6 +58,8 @@ EXPOSE 38332/tcp
 EXPOSE 28332/tcp
 # zmqpubrawtx
 EXPOSE 28333/tcp
+# zmqpubrawtx
+EXPOSE 28334/tcp
 
 WORKDIR /bitcoind
 ENTRYPOINT ["/usr/local/bin/bitcoind-entrypoint.sh"]
