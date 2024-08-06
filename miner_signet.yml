@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  btc_sig_miner:
+    container_name: btc_sig_miner
+    build:
+      context: miner_signet
+    image: bitcoind_signet_miner
+    volumes:
+      - shared_vol_btc:/bitcoind
+    ports:
+      - "38332:38332"
+      - "38333:38333"
+      - "28332:28332"
+      - "28334:28334"
+volumes:
+  shared_vol_btc:
