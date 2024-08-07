@@ -4,13 +4,13 @@ FROM ${OS}:${OS_VER} as bitcoind-install
 
 # Install dependencies
 RUN DEBIAN_FRONTEND=noninteractive \
-    apt-get update -qq && apt-get install -y nano  \
-    net-tools nmap bc gpg curl unzip jq bash-completion git \
-    python3 python3-pip python3-setuptools && \
-    pip install argparse requests cryptography pipreqs
+  apt-get update -qq && apt-get install -y nano  \
+  net-tools nmap bc gpg curl unzip jq bash-completion git \
+  python3 python3-pip python3-setuptools && \
+  pip install argparse requests cryptography pipreqs
 
 RUN DEBIAN_FRONTEND=noninteractive \
-    apt-get -y install python3.9
+  apt-get -y install python3.9
 
 # Install bitcoind
 ENV BITCOIND_VER="24.0.1"

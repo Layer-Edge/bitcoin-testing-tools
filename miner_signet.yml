@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   btc_sig_miner:
     container_name: btc_sig_miner
