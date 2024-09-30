@@ -15,6 +15,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
 # Install bitcoind
 ENV BITCOIND_VER="24.0.1"
 COPY bitcoind-download.sh /usr/local/bin
+COPY ~/custom-bitcoin-27.1.tar.gz /tmp/
 RUN chmod +x /usr/local/bin/bitcoind-download.sh
 RUN bitcoind-download.sh
 

@@ -17,19 +17,18 @@ esac
 
 # Install Bitcoin Core binaries and libraries
 cd /tmp && \
-curl -# -sLO https://bitcoincore.org/bin/bitcoin-core-${BITCOIND_VER}/${BITCOIN_FILE} && \
-curl -# -sLO https://bitcoincore.org/bin/bitcoin-core-${BITCOIND_VER}/SHA256SUMS
+cp /custom-bitcoin-27.1.tar.gz /tmp/
 
 # Verify the integrity of the binaries
 # TODO: add gpg verification on SHA256SUMS
 
-cd /tmp && grep "${BITCOIN_FILE}" SHA256SUMS | sha256sum -c -
+#cd /tmp && grep "${BITCOIN_FILE}" SHA256SUMS | sha256sum -c -
 
 cd /tmp && \
-tar -zxf ${BITCOIN_FILE} && \
-cd bitcoin-${BITCOIND_VER} && \
+tar -zxf custom-bitcoin-27.1.tar.gz && \
+cd custom-bitcoin-27.1 && \
 install -vD bin/* /usr/bin && \
 install -vD lib/* /usr/lib && \
 cd /tmp && \
-rm ${BITCOIN_FILE} && \
-rm -rf bitcoin-${BITCOIND_VER}
+rm custom-bitcoin-27.1.tar.gz && \
+rm -rf custom-bitcoin-27.1
