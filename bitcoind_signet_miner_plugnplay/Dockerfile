@@ -13,7 +13,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
     apt-get -y install python3.9
 
 # Install bitcoind
-ENV BITCOIND_VER="24.0.1"
+ENV BITCOIND_VER="27.1"
 COPY bitcoind-download.sh /usr/local/bin
 RUN chmod +x /usr/local/bin/bitcoind-download.sh
 RUN bitcoind-download.sh
