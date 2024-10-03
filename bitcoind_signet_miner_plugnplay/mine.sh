@@ -2,33 +2,33 @@
 set -Eeuo pipefail
 
 # Define mining constants
-CLI="bitcoin-cli -datadir=~/mining-setup/bitcoind"
-MINER="~/mining-setup/data/contrib/signet/miner"
+CLI="bitcoin-cli -datadir=/home/ubuntu/mining-setup/bitcoind"
+MINER="/home/ubuntu/mining-setup/data/contrib/signet/miner"
 GRIND="bitcoin-util grind"
 MINING_DESC=$(cli listdescriptors | jq -r ".descriptors | .[4].desc")
 
 while echo "Start mining... ";
 do
-    CURRBLOCK=$(bitcoin-cli -datadir=~/mining-setup/bitcoind getblockcount)
+    CURRBLOCK=$(bitcoin-cli -datadir=/home/ubuntu/mining-setup/bitcoind getblockcount)
     echo "Current blockcount: ${CURRBLOCK}"
     if [ $CURRBLOCK -le 100 ]; then
         $MINER --cli="$CLI" generate --grind-cmd="$GRIND" --min-nbits --descriptor=$MINING_DESC --max-blocks=101
     fi
-    
+
     # BITS calibration after 100 blocks
     if [ -f "/bitcoind/nbits_calibration.txt" ]; then
-        NBITS=`cat ~/mining-setup/bitcoind/nbits_calibration.txt`
+        NBITS=`cat /home/ubuntu/mining-setup/bitcoind/nbits_calibration.txt`
     else
         echo "Waiting for difficulty calibration..."
         NBITS=`$MINER calibrate --grind-cmd="$GRIND" --seconds=600 | grep -oP 'nbits=\K[a-f0-9]+'`
         echo "The number of bits is: $NBITS"
-        echo $NBITS > ~/mining-setup/bitcoind/nbits_calibration.txt
+        echo $NBITS > /home/ubuntu/mining-setup/bitcoind/nbits_calibration.txt
     fi
-    
+
     $MINER --cli="$CLI" generate --grind-cmd="$GRIND" --nbits=$NBITS --descriptor=$MINING_DESC --poisson --ongoing
 done
 
 # If loop is interrupted, stop bitcoind
-bitcoin-cli -datadir=~/mining-setup/bitcoind stop
+bitcoin-cli -datadir=/home/ubuntu/mining-setup/bitcoind stop
 
 

@@ -24,10 +24,10 @@ esac
 
 #cd /tmp && grep "${BITCOIN_FILE}" SHA256SUMS | sha256sum -c -
 
-cd ~/mining-setup/tmp && \
+cd /home/ubuntu/mining-setup/tmp && \
 tar -zxf custom-bitcoin-27.1.tar.gz && \
 cd custom-bitcoin-27.1 && \
-install -vD bin/* ~/mining-setup/bin && \
+install -vD bin/* /home/ubuntu/mining-setup/bin && \
 install -vD lib/* /usr/lib && \
-cd ~/mining-setup/tmp && \
+cd /home/ubuntu/mining-setup/tmp && \
 rm -rf custom-bitcoin-27.1

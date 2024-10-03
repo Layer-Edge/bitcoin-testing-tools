@@ -2,4 +2,4 @@
 #
 # Helper script used as an alias for bitcoin-cli with the necessary arguments
 #
-~/mining-setup/bin/bitcoin-cli -datadir=~/mining-setup/bitcoind -signet $@
+/home/ubuntu/mining-setup/bin/bitcoin-cli -datadir=/home/ubuntu/mining-setup/bitcoind -signet $@
