@@ -27,7 +27,7 @@ esac
 cd /home/ubuntu/mining-setup/tmp && \
 tar -zxf custom-bitcoin-27.1.tar.gz && \
 cd custom-bitcoin-27.1 && \
-install -vD bin/* /home/ubuntu/mining-setup/bin && \
+install -vD bin/* /usr/bin && \
 install -vD lib/* /usr/lib && \
 cd /home/ubuntu/mining-setup/tmp && \
 rm -rf custom-bitcoin-27.1
