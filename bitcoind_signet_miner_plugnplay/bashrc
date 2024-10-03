@@ -1,5 +1,13 @@
 # Use bash-completion, if available
+alias bitcoind="~/mining-setup/bin/bitcoind"
+alias bitcoin-qt="~/mining-setup/bin/bitcoin-qt"
+alias bitcoin-util="~/mining-setup/bin/bitcoin-util"
+alias bitcoin-tx="~/mining-setup/bin/bitcoin-tx"
+alias bitcoin-wallet="~/mining-setup/bin/bitcoin-wallet"
+alias test_bitcoin="~/mining-setup/bin/test_bitcoin"
+alias test_bitcoin-qt="~/mining-setup/bin/test_bitcoin-qt"
 alias bitcoin-cli="bitcoin-cli -datadir=/bitcoind"
+alias cli="~/mining-setup/bin/cli"
 
 [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
     . /usr/share/bash-completion/bash_completion

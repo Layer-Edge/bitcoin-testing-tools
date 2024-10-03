@@ -16,19 +16,18 @@ case $architecture in
 esac
 
 # Install Bitcoin Core binaries and libraries
-cd /tmp && \
-cp /custom-bitcoin-27.1.tar.gz /tmp/
+#cd /tmp && \
+#cp /custom-bitcoin-27.1.tar.gz /tmp/
 
 # Verify the integrity of the binaries
 # TODO: add gpg verification on SHA256SUMS
 
 #cd /tmp && grep "${BITCOIN_FILE}" SHA256SUMS | sha256sum -c -
 
-cd /tmp && \
+cd ~/mining-setup/tmp && \
 tar -zxf custom-bitcoin-27.1.tar.gz && \
 cd custom-bitcoin-27.1 && \
-install -vD bin/* /usr/bin && \
+install -vD bin/* ~/mining-setup/bin && \
 install -vD lib/* /usr/lib && \
-cd /tmp && \
-rm custom-bitcoin-27.1.tar.gz && \
+cd ~/mining-setup/tmp && \
 rm -rf custom-bitcoin-27.1
