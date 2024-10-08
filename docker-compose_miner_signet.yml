@@ -1,0 +1,100 @@
+version: "3.6"
+
+services:
+  # tor:
+  #   container_name: tor
+  #   build:
+  #     context: tor
+  #   image: tor_img
+  #   network_mode: "host"
+  #   expose:
+  #     - "9050"
+  #     - "9051"
+
+  btc_sig_miner:
+    container_name: btc_sig_miner
+    build:
+      context: bitcoind_signet_miner_plugnplay
+    image: bitcoind_signet_miner
+    volumes:
+      - shared_vol_btc:/bitcoind
+    network_mode: "host"
+    expose:
+      - "38333"
+      - "38332"
+      - "28334"
+      - "28333"
+      - "28332"
+    ports:
+      - "38333:38333"
+      - "38332:38332"
+      - "28334:28334"
+      - "28333:28333"
+      - "28332:28332"
+
+  # electrs:
+  #   container_name: electrs
+  #   build:
+  #     context: electrs
+  #   image: electrs_img
+  #   volumes:
+  #     - shared_vol_btc:/bitcoind
+  #   network_mode: "host"
+  #   expose:
+  #     - "60601"
+
+  # nginx:
+  #   container_name: nginx
+  #   build:
+  #     context: nginx
+  #   image: nginx_img
+  #   network_mode: "host"
+  #   expose:
+  #     - "60602"
+
+  # c-lightning:
+  #   container_name: c-lightning
+  #   build:
+  #     context: c-lightning
+  #   image: core_lightning
+  #   volumes:
+  #     - shared_vol_ln:/lightningd
+  #   network: "default"
+  #   expose:
+  #     - "39735"
+  #     - "3092"
+
+  # faucet:
+  #   container_name: faucet
+  #   build:
+  #     context: faucet
+  #   image: faucet_img
+  #   network_mode: "host"
+  #   expose:
+  #     - "5000"
+
+  # lnbits:
+  #   container_name: lnbits
+  #   build:
+  #     context: lnbits
+  #   image: lnbits_img
+  #   volumes:
+  #     - shared_vol_ln:/lightningd
+  #   network_mode: "host"
+  #   expose:
+  #     - "7000"
+
+  # rtl:
+  #   container_name: rtl
+  #   build:
+  #     context: rtl
+  #   image: rtl_img
+  #   volumes:
+  #     - shared_vol_ln:/lightningd
+  #   network_mode: "host"
+  #   expose:
+  #     - "3000"
+
+volumes:
+  shared_vol_btc:
+  shared_vol_ln:

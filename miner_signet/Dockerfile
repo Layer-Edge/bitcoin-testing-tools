@@ -56,7 +56,7 @@ EXPOSE 38333/tcp
 EXPOSE 38332/tcp
 # zmqpubrawblock
 EXPOSE 28332/tcp
-# zmqpubhashblock
+EXPOSE 28333/tcp
 EXPOSE 28334/tcp
 
 WORKDIR /bitcoind
